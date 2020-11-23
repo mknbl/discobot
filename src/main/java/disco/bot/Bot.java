@@ -46,7 +46,6 @@ public class Bot {
         Random random = new Random();
         List<String> maser = Arrays.asList("Lucjan Próchnica", "Adam Dubiel", "Patryk Pyrchla", "Paweł Jarzębowski", "Mateusz Książek");
         final boolean[] luka = {false};
-        ACLParser parser = new ACLParser();
         List<String> ping = Arrays.asList("Lucjana", "Luki", "JarzomBa", "DubSona", "mknbla", "Maniaka");
 
         client.getEventDispatcher()
@@ -133,100 +132,101 @@ public class Bot {
 
                     }
 
-                    if (event.getMessage().getContent().toLowerCase().equals("!preqwek")) {
+                    //todo try-catch wrapper?
+                    if ( msg.equals("!preqwek") ) {
                         try {
-                            finalMessage = parser.getACLWEKPreq(1);
+                            finalMessage = ACLParser.getACLWEKPreq(1);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
                         createMessage( event, "```" + finalMessage + "```" );
                     }
 
-                    if (event.getMessage().getContent().toLowerCase().contains("!preqwekr0")) {
+                    if ( msg.contains("!preqwekr0") ) {
                         try {
-                            finalMessage = parser.getACLWEKPreq(0);
+                            finalMessage = ACLParser.getACLWEKPreq(0);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
                         createMessage( event, "```" + finalMessage + "```");
                     }
 
-                    if (event.getMessage().getContent().toLowerCase().equals("!preqgt4")) {
+                    if ( msg.equals("!preqgt4") ) {
                         try {
-                            finalMessage = parser.getACLGT4Preq(5);
+                            finalMessage = ACLParser.getACLGT4Preq(5);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
                         createMessage( event, "```" + finalMessage + "```");
                     }
 
-                    if (event.getMessage().getContent().toLowerCase().contains("!preqgt4r0")) {
+                    if ( msg.contains("!preqgt4r0") ) {
                         try {
-                            finalMessage = parser.getACLGT4Preq(0);
+                            finalMessage = ACLParser.getACLGT4Preq(0);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
                         createMessage( event, "```" + finalMessage + "```");
                     }
 
-                    if (event.getMessage().getContent().toLowerCase().contains("!preqgt4r1")) {
+                    if ( msg.contains("!preqgt4r1") ) {
                         try {
-                            finalMessage = parser.getACLGT4Preq(1);
+                            finalMessage = ACLParser.getACLGT4Preq(1);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
                         createMessage( event, "```" + finalMessage + "```");
                     }
 
-                    if (event.getMessage().getContent().toLowerCase().contains("!preqgt4r2")) {
+                    if ( msg.contains("!preqgt4r2") ) {
                         try {
-                            finalMessage = parser.getACLGT4Preq(2);
+                            finalMessage = ACLParser.getACLGT4Preq(2);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
                         createMessage( event, "```" + finalMessage + "```");
                     }
 
-                    if (event.getMessage().getContent().toLowerCase().contains("!preqgt4r3")) {
+                    if ( msg.contains("!preqgt4r3") ) {
                         try {
-                            finalMessage = parser.getACLGT4Preq(3);
+                            finalMessage = ACLParser.getACLGT4Preq(3);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
                         createMessage( event, "```" + finalMessage + "```");
                     }
 
-                    if (event.getMessage().getContent().toLowerCase().contains("!preqgt4r4")) {
+                    if ( msg.contains("!preqgt4r4") ) {
                         try {
-                            finalMessage = parser.getACLGT4Preq(4);
+                            finalMessage = ACLParser.getACLGT4Preq(4);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
                         createMessage( event, "```" + finalMessage + "```");
                     }
 
-                    if (event.getMessage().getContent().toLowerCase().contains("!preqgt4r5")) {
+                    if ( msg.contains("!preqgt4r5") ) {
                         try {
-                            finalMessage = parser.getACLGT4Preq(5);
+                            finalMessage = ACLParser.getACLGT4Preq(5);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
                         createMessage( event, "```" + finalMessage + "```");
                     }
 
-                    if (event.getMessage().getContent().toLowerCase().contains("!preqgt4r6")) {
+                    if ( msg.contains("!preqgt4r6") ) {
                         try {
-                            finalMessage = parser.getACLGT4Preq(6);
+                            finalMessage = ACLParser.getACLGT4Preq(6);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
                         createMessage( event, "```" + finalMessage + "```");
                     }
 
-                    if (event.getMessage().getContent().toLowerCase().contains("!generalkagt4")) {
+                    if ( msg.contains("!generalkagt4") ) {
                         try {
-                            finalMessage = parser.getACLGT4DriverStandings();
-                            finalMessage2 = parser.getACLGT4TeamStandings();
+                            finalMessage = ACLParser.getACLGT4DriverStandings();
+                            finalMessage2 = ACLParser.getACLGT4TeamStandings();
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
