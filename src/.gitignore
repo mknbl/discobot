@@ -1,0 +1,11 @@
+target/
+out/
+*.class
+*.jar
+*.war
+*.ear
+*.logs
+*.iml
+.idea/
+debug.log
+file.txt
