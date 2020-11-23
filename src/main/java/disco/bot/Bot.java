@@ -15,15 +15,19 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.time.Instant;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static java.lang.StrictMath.abs;
+
 public class Bot {
 
 
     private static GatewayDiscordClient client;
+    private static String finalMessage, finalMessage2;
 
     static {
         try {
@@ -42,6 +46,8 @@ public class Bot {
         Random random = new Random();
         List<String> maser = Arrays.asList("Lucjan Próchnica", "Adam Dubiel", "Patryk Pyrchla", "Paweł Jarzębowski", "Mateusz Książek");
         final boolean[] luka = {false};
+        ACLParser parser = new ACLParser();
+        List<String> ping = Arrays.asList("Lucjana", "Luki", "JarzomBa", "DubSona", "mknbla", "Maniaka");
 
         client.getEventDispatcher()
                 .on(ReadyEvent.class)
@@ -116,6 +122,116 @@ public class Bot {
                         reactUnicode( event, Reactions.THUMBS_DOWN );
                         reactUnicode( event, Reactions.WHATEVER );
                         reactUnicode( event, Reactions.FACEPALM );
+                    }
+
+                    if (event.getMessage().getContent().toLowerCase().contains("!ping")){
+                        Duration between = Duration.between(event.getMessage().getTimestamp(), Instant.now());
+                        if(abs(between.toMillis()) < 1500){
+                            event.getMessage().getChannel().flatMap(channel -> channel.createMessage("Pong! Opóźnienie wynosi " + abs(between.toMillis()) + "ms. To na pewno mniej niż opóźnienie " + ping.get(random.nextInt(ping.size())) + "! " + disco.bot.Bot.Reactions.MIDDLE_FINGER.getValue())).subscribe();
+                        }
+                        else event.getMessage().getChannel().flatMap(channel -> channel.createMessage("Pong! Opóźnienie wynosi " + abs(between.toMillis()) + "ms. Totalna kompromitacja. Sugeruję nastawić zegarek lub dorzucić węgla do RaspberryPi" + disco.bot.Bot.Reactions.MIDDLE_FINGER.getValue())).subscribe();
+
+                    }
+
+                    if (event.getMessage().getContent().toLowerCase().equals("!preqwek")) {
+                        try {
+                            finalMessage = parser.getACLWEKPreq(1);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        createMessage( event, "```" + finalMessage + "```" );
+                    }
+
+                    if (event.getMessage().getContent().toLowerCase().contains("!preqwekr0")) {
+                        try {
+                            finalMessage = parser.getACLWEKPreq(0);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        createMessage( event, "```" + finalMessage + "```");
+                    }
+
+                    if (event.getMessage().getContent().toLowerCase().equals("!preqgt4")) {
+                        try {
+                            finalMessage = parser.getACLGT4Preq(5);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        createMessage( event, "```" + finalMessage + "```");
+                    }
+
+                    if (event.getMessage().getContent().toLowerCase().contains("!preqgt4r0")) {
+                        try {
+                            finalMessage = parser.getACLGT4Preq(0);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        createMessage( event, "```" + finalMessage + "```");
+                    }
+
+                    if (event.getMessage().getContent().toLowerCase().contains("!preqgt4r1")) {
+                        try {
+                            finalMessage = parser.getACLGT4Preq(1);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        createMessage( event, "```" + finalMessage + "```");
+                    }
+
+                    if (event.getMessage().getContent().toLowerCase().contains("!preqgt4r2")) {
+                        try {
+                            finalMessage = parser.getACLGT4Preq(2);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        createMessage( event, "```" + finalMessage + "```");
+                    }
+
+                    if (event.getMessage().getContent().toLowerCase().contains("!preqgt4r3")) {
+                        try {
+                            finalMessage = parser.getACLGT4Preq(3);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        createMessage( event, "```" + finalMessage + "```");
+                    }
+
+                    if (event.getMessage().getContent().toLowerCase().contains("!preqgt4r4")) {
+                        try {
+                            finalMessage = parser.getACLGT4Preq(4);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        createMessage( event, "```" + finalMessage + "```");
+                    }
+
+                    if (event.getMessage().getContent().toLowerCase().contains("!preqgt4r5")) {
+                        try {
+                            finalMessage = parser.getACLGT4Preq(5);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        createMessage( event, "```" + finalMessage + "```");
+                    }
+
+                    if (event.getMessage().getContent().toLowerCase().contains("!preqgt4r6")) {
+                        try {
+                            finalMessage = parser.getACLGT4Preq(6);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        createMessage( event, "```" + finalMessage + "```");
+                    }
+
+                    if (event.getMessage().getContent().toLowerCase().contains("!generalkagt4")) {
+                        try {
+                            finalMessage = parser.getACLGT4DriverStandings();
+                            finalMessage2 = parser.getACLGT4TeamStandings();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        createMessage( event, "```" + finalMessage + "```");
+                        createMessage( event, "```" + finalMessage2 + "```");
                     }
 
 //                    client.getRestClient()
